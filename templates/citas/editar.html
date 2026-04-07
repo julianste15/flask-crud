@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Appointment | Flask CRUD{% endblock %}
+
+{% block content %}
+<div class="form-section">
+    <div class="section-header">
+        <h1>Editar Cita #{{ cita.id if cita else 'Desconocido' }}</h1>
+        <a href="{{ url_for('citas.lista') }}" class="btn btn-secondary">Volver al Listado</a>
+    </div>
+
+    <div class="form-card glass">
+        {% if cita %}
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="paciente">Nombre del Paciente</label>
+                <input type="text" id="paciente" name="paciente" class="form-control" value="{{ cita.paciente }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="medico">Médico</label>
+                <select id="medico" name="medico" class="form-control" required>
+                    <option value="Dr. House" {{ 'selected' if cita.medico == 'Dr. House' }}>Dr. House</option>
+                    <option value="Dra. Quinn" {{ 'selected' if cita.medico == 'Dra. Quinn' }}>Dra. Quinn</option>
+                    <option value="Dr. Strange" {{ 'selected' if cita.medico == 'Dr. Strange' }}>Dr. Strange</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha de la Cita</label>
+                <input type="date" id="fecha" name="fecha" class="form-control" value="{{ cita.fecha }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado" class="form-control" required>
+                    <option value="Pendiente" {{ 'selected' if cita.estado == 'Pendiente' }}>Pendiente</option>
+                    <option value="Confirmada" {{ 'selected' if cita.estado == 'Confirmada' }}>Confirmada</option>
+                    <option value="Cancelada" {{ 'selected' if cita.estado == 'Cancelada' }}>Cancelada</option>
+                </select>
+            </div>
+
+            <div class="cta-buttons" style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary">Actualizar Cita</button>
+            </div>
+        </form>
+        {% else %}
+        <p style="text-align:center; padding: 3rem; color:var(--secondary);">
+            Cita no encontrada. Puede haber sido eliminada o movida.
+        </p>
+        <div style="text-align:center; padding-bottom: 2rem;">
+            <a href="{{ url_for('citas.lista') }}" class="btn btn-primary">Volver al Panel</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

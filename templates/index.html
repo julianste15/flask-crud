@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome | Flask CRUD{% endblock %}
+
+{% block content %}
+<section class="hero glass">
+    <div class="hero-content">
+        <h1>Estructura MVC en Flask</h1>
+        <p class="subtitle">Eficiente, Organizado y Escalable</p>
+        <p>Una arquitectura limpia utilizando el patrón Modelo-Vista-Controlador, optimizada para el rendimiento y la facilidad de mantenimiento.</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Comenzar</a>
+            <a href="#" class="btn btn-secondary">Leer Más</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <!-- We will generate a nice mockup image later if possible, but for now a simple gradient container -->
+        <div class="code-preview glass">
+            <pre><code>from flask import Flask
+from routes.main import main_bp
+
+app = Flask(__name__)
+app.register_blueprint(main_bp)</code></pre>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature-card glass">
+        <h3>Arquitectura</h3>
+        <p>Sigue el patrón MVC estricto para la separación de responsabilidades.</p>
+    </div>
+    <div class="feature-card glass">
+        <h3>Diseño</h3>
+        <p>IU moderna modo oscuro con micro-interacciones premium.</p>
+    </div>
+    <div class="feature-card glass">
+        <h3>Velocidad</h3>
+        <p>Boilerplate optimizado para un desarrollo rápido.</p>
+    </div>
+</section>
+{% endblock %}

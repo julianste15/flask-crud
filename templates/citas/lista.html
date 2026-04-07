@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}List of Appointments | Flask CRUD{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>Citas Médicas</h1>
+    <a href="{{ url_for('citas.nueva') }}" class="btn btn-primary">Nueva Cita</a>
+</div>
+
+<div class="table-container glass">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>#{{ cita.id }}</td>
+                <td><strong>{{ cita.paciente }}</strong></td>
+                <td>{{ cita.medico }}</td>
+                <td>{{ cita.fecha }}</td>
+                <td>
+                    <span class="badge badge-{{ cita.estado|lower }}">
+                        {{ cita.estado }}
+                    </span>
+                </td>
+                <td class="action-btns">
+                    <a href="{{ url_for('citas.editar', id=cita.id) }}" class="btn btn-secondary btn-sm">Editar</a>
+                    <form action="#" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if not citas %}
+            <tr>
+                <td colspan="6" style="text-align:center; color:var(--text-muted); padding: 3rem;">
+                    No se encontraron citas. ¡Crea la primera arriba!
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
