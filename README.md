@@ -10,7 +10,7 @@ Este proyecto es una aplicación web desarrollada con **Flask** utilizando el pa
     *   **Listado**: Visualización clara de citas con estados diferenciados por colores.
     *   **Creación**: Formulario intuitivo para añadir nuevas citas.
     *   **Edición**: Capacidad de modificar registros existentes con carga de datos dinámica.
-*   **Frontend-First**: Interfaz funcional con datos de prueba (*mock data*) lista para ser conectada a una base de datos.
+*   **Arquitectura MVC Real**: Integración completa con base de datos SQLite usando SQLAlchemy ORM.
 
 ## Estructura del Proyecto
 
@@ -47,4 +47,7 @@ Para ejecutar este proyecto localmente, asegúrate de tener Python instalado y s
     Abre tu navegador en [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
 ---
-**Nota**: El proyecto actualmente utiliza datos locales (*MOCK_CITAS*) para la previsualización del frontend hasta que se complete la integración con el backend y la base de datos (SQLAlchemy).
+**Documentación adicional**:
+- [ARCHITECTURE.md](ARCHITECTURE.md): Detalle de la arquitectura MVC.
+- [EXPLICACION_FRONTEND.md](EXPLICACION_FRONTEND.md): Guía sobre el uso de Jinja2 y componentes visuales.
+- [QUICKSTART.md](QUICKSTART.md): Guía rápida para ejecutar el proyecto.

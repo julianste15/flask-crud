@@ -1,42 +1,69 @@
 {% extends "base.html" %}
 
-{% block title %}Welcome | Flask CRUD{% endblock %}
+{% block title %}Inicio | Clínica Piedrazul{% endblock %}
 
 {% block content %}
 <section class="hero glass">
     <div class="hero-content">
-        <h1>Estructura MVC en Flask</h1>
-        <p class="subtitle">Eficiente, Organizado y Escalable</p>
-        <p>Una arquitectura limpia utilizando el patrón Modelo-Vista-Controlador, optimizada para el rendimiento y la facilidad de mantenimiento.</p>
+        <h1>Sistema de Gestión de Citas</h1>
+        <p class="subtitle">Clínica Piedrazul - Atención Médica Integral</p>
+        <p>Plataforma moderna y eficiente para la gestión de citas médicas, construida con Flask y arquitectura MVC adaptada.</p>
         <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">Comenzar</a>
-            <a href="#" class="btn btn-secondary">Leer Más</a>
+            <a href="{{ url_for('citas.nueva') }}" class="btn btn-primary">🗓️ Agendar Cita</a>
+            <a href="{{ url_for('citas.lista') }}" class="btn btn-secondary">📋 Ver Citas</a>
         </div>
     </div>
     <div class="hero-image">
-        <!-- We will generate a nice mockup image later if possible, but for now a simple gradient container -->
         <div class="code-preview glass">
             <pre><code>from flask import Flask
-from routes.main import main_bp
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.register_blueprint(main_bp)</code></pre>
+db = SQLAlchemy(app)
+
+# Modelos MVC:
+# - Paciente
+# - Médico
+# - Cita</code></pre>
         </div>
     </div>
 </section>
 
 <section class="features">
     <div class="feature-card glass">
-        <h3>Arquitectura</h3>
-        <p>Sigue el patrón MVC estricto para la separación de responsabilidades.</p>
+        <h3>📊 Arquitectura MVC</h3>
+        <p>Separación clara entre Modelos (datos), Vistas (presentación) y Controladores (lógica).</p>
     </div>
     <div class="feature-card glass">
-        <h3>Diseño</h3>
-        <p>IU moderna modo oscuro con micro-interacciones premium.</p>
+        <h3>🗄️ Base de Datos</h3>
+        <p>SQLAlchemy con SQLite para persistencia segura y escalable de datos.</p>
     </div>
     <div class="feature-card glass">
-        <h3>Velocidad</h3>
-        <p>Boilerplate optimizado para un desarrollo rápido.</p>
+        <h3>⚡ Rendimiento</h3>
+        <p>Diseño optimizado para rapidez, mantenibilidad y facilidad de expansión.</p>
+    </div>
+</section>
+
+<section class="info-section glass">
+    <h2>Estructura del Proyecto</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <strong>models/</strong>
+            <p>Paciente, Médico, Cita - Definen la estructura de datos con SQLAlchemy</p>
+        </div>
+        <div class="info-item">
+            <strong>routes/</strong>
+            <p>main.py y citas.py - Controladores que manejan las rutas y lógica CRUD</p>
+        </div>
+        <div class="info-item">
+            <strong>templates/</strong>
+            <p>Vistas HTML con Jinja2 para renderizar datos dinámicamente</p>
+        </div>
+        <div class="info-item">
+            <strong>static/</strong>
+            <p>CSS y recursos estáticos para estilos modernos</p>
+        </div>
     </div>
 </section>
 {% endblock %}
+
